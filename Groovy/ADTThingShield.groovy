@@ -13,15 +13,6 @@ metadata {
 		fingerprint profileId: "0104", deviceId: "0138", inClusters: "0000"
 	}
     
-    
-
-	// Simulator metadata
-	simulator {
-		// status messages
-		status "ping": "catchall: 0104 0000 01 01 0040 00 6A67 00 00 0000 0A 00 0A70696E67"
-		status "hello": "catchall: 0104 0000 01 01 0040 00 0A21 00 00 0000 0A 00 0A48656c6c6f20576f726c6421"
-	}
-
 	// UI tile definitions
 	tiles {
 		
@@ -52,8 +43,6 @@ metadata {
 Map parse(String description) {
 
 	def value = zigbee.parse(description)?.text
-	
-	// Not super interested in ping, can we just move on? 
 	if (value == "ping" || value == " ") 
 	{
 		return
@@ -105,12 +94,8 @@ Map parse(String description) {
 	} else {
 		result.name = null; 
 	}
-
-	
 	createEvent(name: result.name, value: result.value)
-   
 }
-
 
 def poll() {
 	zigbee.smartShield(text: "poll").format()

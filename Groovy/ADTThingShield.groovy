@@ -39,9 +39,7 @@ metadata {
 		details(["motion","fdoor","bdoor","gdoor"])
 	}
 
-
 Map parse(String description) {
-
 	def value = zigbee.parse(description)?.text
 	if (value == "ping" || value == " ") 
 	{
@@ -70,24 +68,24 @@ Map parse(String description) {
 		result.name = "motion";
 		result.value = "inactive";
 		
-    }else if (value && value == "fdooropen") {
+    	}else if (value && value == "fdooropen") {
 		result.name = "fdoor";
 		result.value = "openfront";
-    }else if (value && value == "fdoorclosed") {
+    	}else if (value && value == "fdoorclosed") {
 		result.name = "fdoor";
 		result.value = "closedfront";
         
-    }else if (value && value == "bdooropen") {
+	}else if (value && value == "bdooropen") {
 		result.name = "bdoor";
 		result.value = "openback";
-    }else if (value && value == "bdoorclosed") {
+	}else if (value && value == "bdoorclosed") {
 		result.name = "bdoor";
 		result.value = "closedback";
         
-    }else if (value && value == "gdooropen") {
+    	}else if (value && value == "gdooropen") {
 		result.name = "gdoor";
 		result.value = "opengarage";
-    }else if (value && value == "gdoorclosed") {
+    	}else if (value && value == "gdoorclosed") {
 		result.name = "gdoor";
 		result.value = "closedgarage";
         
